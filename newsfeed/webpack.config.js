@@ -41,9 +41,11 @@ module.exports = {
     ],
     proxy: {
       "/api": "http://localhost:8080",
+      secure: false,
     },
     port: 3000,
     historyApiFallback: true,
+    allowedHosts: 'all',
   },
   devtool: "inline-source-map",
 };
