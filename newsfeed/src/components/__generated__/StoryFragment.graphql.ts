@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<30eaa553a6acde39305cf67a23d323ee>>
+ * @generated SignedSource<<8e5d80629667acc892d6f7e99de08c5c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,16 +8,20 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type StoryFragment$data = {
   readonly createdAt: string;
+  readonly id: string;
   readonly poster: {
-    readonly " $fragmentSpreads": FragmentRefs<"PosterBylineFragment">;
+    readonly name: string | null;
+    readonly profilePicture: {
+      readonly url: string;
+    } | null;
   };
   readonly summary: string | null;
   readonly thumbnail: {
-    readonly " $fragmentSpreads": FragmentRefs<"ImageFragment">;
+    readonly url: string;
   } | null;
   readonly title: string;
   readonly " $fragmentType": "StoryFragment";
@@ -27,10 +31,29 @@ export type StoryFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"StoryFragment">;
 };
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = [
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "url",
+    "storageKey": null
+  }
+];
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "refetch": {
+      "connection": null,
+      "fragmentPathInResult": [
+        "node"
+      ],
+      "operation": require('./StoryFragmentQuery.graphql'),
+      "identifierField": "id"
+    }
+  },
   "name": "StoryFragment",
   "selections": [
     {
@@ -63,9 +86,21 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
+          "alias": null,
           "args": null,
-          "kind": "FragmentSpread",
-          "name": "PosterBylineFragment"
+          "kind": "ScalarField",
+          "name": "name",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "concreteType": "Image",
+          "kind": "LinkedField",
+          "name": "profilePicture",
+          "plural": false,
+          "selections": (v0/*: any*/),
+          "storageKey": null
         }
       ],
       "storageKey": null
@@ -77,26 +112,22 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "thumbnail",
       "plural": false,
-      "selections": [
-        {
-          "args": [
-            {
-              "kind": "Literal",
-              "name": "width",
-              "value": 400
-            }
-          ],
-          "kind": "FragmentSpread",
-          "name": "ImageFragment"
-        }
-      ],
+      "selections": (v0/*: any*/),
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
       "storageKey": null
     }
   ],
   "type": "Story",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "779b222c2da4e07d32eef85f18a36314";
+(node as any).hash = "dcad5c2c77889817cb8919ddaf1ae17b";
 
 export default node;
